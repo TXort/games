@@ -1,0 +1,56 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <form class="d-flex">
+
+
+      @if(this.userName()) {
+        <div class="nav-content">
+          <div>
+            <p class="text-black my-2">{{this.userName()}}</p>
+          </div>
+          <div>
+          <mat-nav-list>
+            @for (link of routes; track link; let index = $index) {
+              @if (  link.path != null && this.filterRoutes(link.path) && link.path.length > 3 ) {
+              <mat-list-item (click)="this.navigateTo(link.path)">
+                  {{this.capitalizeFirstLetter(link.path)}}
+              </mat-list-item>
+              }
+            }
+          </mat-nav-list>
+          </div>
+          <div class="signout-button">
+            <button mat-raised-button (click)="this.signOut()">
+              Sign out
+            </button>
+          </div>
+        </div>
+      } @else {
+        <app-signin />
+      }
+    </form>
+    @if (this.showFiller()) {
+      <p>Lorem, ipsum dolor sit amet consectetur.</p>
+    }
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class = "upper-left">
+      @if ( drawer.opened ) {
+        <mat-icon (click)="drawer.toggle()">
+          keyboard_arrow_left</mat-icon>
+      } @else {
+        <mat-icon (click)="drawer.toggle()">
+          keyboard_arrow_right</mat-icon>
+      }
+    </div>
+  </div>
+  
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
+
+
+

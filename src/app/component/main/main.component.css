@@ -1,0 +1,34 @@
+.example-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.upper-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* make collumn divs share space 20% 70% 10% */
+.nav-content {
+  display: inline-block;
+  min-height: 100%;
+}
+
+.nav-content > div:first-child {
+  min-height: 10%;
+}
+
+.nav-content > div:nth-child(2) {
+  min-height: 70%;
+}
+
+.nav-content > div:last-child {
+  min-height: 20%;
+}
