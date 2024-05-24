@@ -1,4 +1,26 @@
-<div>
-  Placeholder
+<!-- Add search bar-->
+
+<div class="wrap">
+  <div class="search">
+    <input type="text" class="searchTerm" placeholder="Search for games" [(ngModel)]="searchContent" (ngModelChange)="doSearch()">
+    <button type="submit" class="searchButton" (click)="doSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
 </div>
 
+<ng-container>
+  @if( this.games$ | async; as games) {
+    @if (games.length === 0) {
+      <div class="center">
+        <h1>No games found</h1>
+      </div>
+    } @else {
+      <app-game-list [games]="games"></app-game-list>
+    }
+  } @else {
+    <div class="center">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+</ng-container>
