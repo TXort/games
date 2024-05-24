@@ -1,0 +1,11 @@
+<ng-container>
+  @for (game of games; track game; let index = $index) {
+    <a [routerLink]="['/game', game.id_videogame]">
+        <app-game-card [title]="game.title"
+                       [avg_rating]="game.rating"
+                       [game_picture_url]="game.game_picture_url"
+                       [description]="game.description">
+        </app-game-card>
+    </a>
+  }
+</ng-container>
