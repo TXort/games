@@ -1,0 +1,12 @@
+<mat-card class="game-card">
+  <img class = "game-card-image" src="{{game_picture_url}}" alt="game image">
+  <div class = "info">
+    <h2 class="game-card-title">{{title}}</h2>
+    @if(avg_rating) {
+      <p class="mat-caption">
+        <mat-icon>star</mat-icon> <span>{{avg_rating}} / 5</span>
+      </p>
+    }
+    <p class="mat-description">{{description}}</p>
+  </div>
+</mat-card>
