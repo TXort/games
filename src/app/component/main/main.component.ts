@@ -27,7 +27,7 @@ export class MainComponent {
   showFiller: WritableSignal<boolean> = signal(false);
 
 
-  constructor(private auth: AuthService, private router: Router, private ngZone: NgZone) {
+  constructor(private auth: AuthService, private router: Router) {
     this.auth.currentUser.subscribe(user => {
       this.userName.set(user?.user_metadata?.['user_name']);
     });
