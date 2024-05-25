@@ -39,6 +39,7 @@ export class ReviewFormComponent {
   public reviewFormGroup: FormGroup = this.fb.group({
     comment: ['', [Validators.required, commentValidator]],
     rating: [''],
+    title: ['', [Validators.required]]
   });
 
   public getStar(i: number) {
@@ -56,7 +57,7 @@ export class ReviewFormComponent {
   public onSubmit(): void {
     this.reviewFormGroup.patchValue({ rating: `${this.rating}` });
     this.submit.emit(this.reviewFormGroup.value);
-    this.reviewFormGroup.reset();
+    this.reviewFormGroup.reset( { rating: '', comment: '', title: '' });
   }
 
 

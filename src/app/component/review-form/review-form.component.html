@@ -1,12 +1,13 @@
 <mat-card class="main">
   <form class="form-review" [formGroup]="reviewFormGroup">
     <form class="review-text foe">
-      <input class="comment-text" matInput type="comment" formControlName="comment"  autofocus />
-      @if (reviewFormGroup.get('comment')?.getError('required')) {
-        <mat-error class="error-text">Review can't be empty</mat-error>
+      <input class="comment-text" matInput type="title" formControlName="title"  placeholder="Title"  />
+      <input class="comment-text" matInput type="comment" formControlName="comment"  placeholder="Content" />
+      @if (reviewFormGroup.get('comment')?.getError('required') || reviewFormGroup.get('title')?.getError('required')) {
+        <mat-error class="error-text">Title or content can't be empty</mat-error>
       }
       @if (reviewFormGroup.get('comment')?.getError('comment')) {
-        <mat-error class="error-text">Comment contains bad word</mat-error>
+        <mat-error class="error-text">Content contains bad word</mat-error>
       }
     </form>
     <div class="rating">
