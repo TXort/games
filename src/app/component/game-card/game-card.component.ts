@@ -23,4 +23,5 @@ export class GameCardComponent {
   @Input() license: string | undefined;
   @Input() avg_rating: number | undefined;
 
+  protected readonly Math = Math;
 }

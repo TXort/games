@@ -4,7 +4,7 @@
     <h2 class="game-card-title">{{title}}</h2>
     @if(avg_rating) {
       <p class="mat-caption">
-        <mat-icon>star</mat-icon> <span>{{avg_rating}} / 5</span>
+        <mat-icon>star</mat-icon> <span>{{ Math.round(avg_rating * 100) / 100 }} / 5</span>
       </p>
     }
     <p class="mat-description">{{description}}</p>
