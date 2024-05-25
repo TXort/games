@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Review} from "../models/review.model";
+import {map, Observable} from "rxjs";
+import {IRawReview} from "../interfaces/rawReview.interface";
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  public getReviewsOfVideoGame(id_videogame_in: number): Observable<Array<Review>> {
+    return this.http.get<Array<IRawReview>>(environment.supabase.url + '/rest/v1/rpc/get_reviews_of_videogame?id_videogame_in=' + id_videogame_in).pipe(
+      map((response: Array<IRawReview>) => {
+          console.log("SDASDFASDFasdf");
+        console.log(response);
+        return response.map((review: IRawReview) => new Review(review));
+      }
+      )
+    );
+  }
+
+
+
 }
