@@ -18,6 +18,7 @@
 /* make collumn divs share space 20% 70% 10% */
 .nav-content {
   display: inline-block;
+  text-align: center;
   min-height: 100%;
 }
 
@@ -36,3 +37,13 @@
 .main-content-wrapper {
   margin: 5ch;
 }
+
+.user-picture {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 100px;
+  margin: 20px;
+  margin-top: 10px;
+}
+

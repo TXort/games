@@ -6,14 +6,27 @@
       @if(this.userName()) {
         <div class="nav-content">
           <div>
-            <p class="text-black my-2">{{this.userName()}}</p>
+            @if (this.userAvatar()) {
+              <img class="user-picture" src="{{this.userAvatar()}}"  />
+            } @else {
+              <img class="user-picture" src="../../assets/images/default-user.jpg"  />
+            }
+          </div>
+          <div>
+            @if (this.userName()) {
+              <p class="text-black my-2">{{this.userName()}}</p>
+            } @else if (this.userEmail()) {
+              <p class="text-black my-2">{{this.userEmail()}}</p>
+            } @else {
+              <p class="text-black my-2">Unknown</p>
+            }
           </div>
           <div>
           <mat-nav-list>
             @for (link of routes; track link; let index = $index) {
               @if (  link.path != null && this.filterRoutes(link.path) && link.path.length > 3 ) {
               <mat-list-item (click)="this.navigateTo(link.path)">
-                  {{this.capitalizeFirstLetter(link.path)}}
+                  {{this.fixName(link.path)}}
               </mat-list-item>
               }
             }

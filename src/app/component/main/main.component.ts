@@ -1,6 +1,6 @@
 import {Component, NgZone, Signal, signal, WritableSignal} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
-import {Router, RouterOutlet} from "@angular/router";
+import {Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet} from "@angular/router";
 import {MatButtonModule} from '@angular/material/button';
 import {MatDrawerContainer, MatSidenavModule} from '@angular/material/sidenav';
 import 'zone.js';
@@ -15,7 +15,7 @@ import {SigninComponent} from "../signin/signin.component";
   selector: 'app-main',
   standalone: true,
   imports: [
-    MatDrawerContainer, MatSidenavModule, MatButtonModule, MatIcon, MatIconModule, MatNavList, MatListItem, SigninComponent, RouterOutlet
+    MatDrawerContainer, MatSidenavModule, MatButtonModule, MatIcon, MatIconModule, MatNavList, MatListItem, SigninComponent, RouterOutlet, RouterModule, RouterLink, RouterLinkActive
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
@@ -24,12 +24,15 @@ import {SigninComponent} from "../signin/signin.component";
 export class MainComponent {
 
   userName: WritableSignal<string> = signal('');
+  userEmail: WritableSignal<string | undefined> = signal('');
   showFiller: WritableSignal<boolean> = signal(false);
-
+  userAvatar: WritableSignal<string | null> = signal(null);
 
   constructor(private auth: AuthService, private router: Router) {
     this.auth.currentUser.subscribe(user => {
       this.userName.set(user?.user_metadata?.['user_name']);
+      this.userAvatar.set(user?.user_metadata?.['avatar_url']);
+      this.userEmail.set(user?.email);
     });
     console.log(routes);
   }
@@ -47,8 +50,8 @@ export class MainComponent {
     this.showFiller.set(!this.showFiller());
   }
 
-  capitalizeFirstLetter(string: string): string {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  fixName(string: string): string {
+    return string.charAt(0).toUpperCase() + string.slice(1).replace(/-/g, ' ');
   }
 
   filterRoutes(str: string): any {
