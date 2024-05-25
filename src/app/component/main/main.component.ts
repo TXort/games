@@ -9,13 +9,15 @@ import {routes} from "../../app.routes";
 
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {SigninComponent} from "../signin/signin.component";
+import {StorageService} from "../../service/storage.service";
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
-    MatDrawerContainer, MatSidenavModule, MatButtonModule, MatIcon, MatIconModule, MatNavList, MatListItem, SigninComponent, RouterOutlet, RouterModule, RouterLink, RouterLinkActive
+    MatDrawerContainer, MatSidenavModule, MatButtonModule, MatIcon, MatIconModule, MatNavList, MatListItem, SigninComponent, RouterOutlet, RouterModule, RouterLink, RouterLinkActive,
+
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
@@ -28,11 +30,17 @@ export class MainComponent {
   showFiller: WritableSignal<boolean> = signal(false);
   userAvatar: WritableSignal<string | null> = signal(null);
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService, private router: Router, private ls: StorageService) {
     this.auth.currentUser.subscribe(user => {
-      this.userName.set(user?.user_metadata?.['user_name']);
-      this.userAvatar.set(user?.user_metadata?.['avatar_url']);
-      this.userEmail.set(user?.email);
+      if ( this.ls?.get('sb-jzfegpsbaxtsanqvzcid-auth-token') ) {
+        this.userName.set(this.ls?.get('sb-jzfegpsbaxtsanqvzcid-auth-token').user?.user_metadata?.['user_name']);
+        this.userAvatar.set(this.ls?.get('sb-jzfegpsbaxtsanqvzcid-auth-token').user?.user_metadata?.['avatar_url']);
+        this.userEmail.set(this.ls?.get('sb-jzfegpsbaxtsanqvzcid-auth-token').user?.email);
+      } else {
+        this.userName.set(user?.user_metadata?.['user_name']);
+        this.userAvatar.set(user?.user_metadata?.['avatar_url']);
+        this.userEmail.set(user?.email);
+      }
     });
     console.log(routes);
   }
@@ -43,7 +51,7 @@ export class MainComponent {
 
   signOut() {
     this.auth.signOut();
-    this.router.navigate(['/signin']);
+    //this.router.navigate(['/signin']);
   }
 
   toggleFiller() {
