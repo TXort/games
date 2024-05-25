@@ -28,7 +28,9 @@ export class GameReviewListComponent {
   }
 
   public onDelete(review: Review): void {
-    return;
+    this.reviewService.deleteReview(review.id_review).subscribe(() => {
+      console.log('Review deleted');
+    })
   }
 
 }
