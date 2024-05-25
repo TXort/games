@@ -22,7 +22,10 @@
         </span>
       </div>
 
-      <div class="data comment">{{ review.content }}</div>
+      <div class="data comment">
+        <div class="bold">{{ review.title }}</div>
+        {{ review.content }}
+      </div>
 
       @if ( canDelete(review) ) {
       <ng-container>
