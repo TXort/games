@@ -36,4 +36,13 @@ export class VideogameService {
     );
   }
 
+  public getVideoGameById(id_videogame_in: number): Observable<VideoGame> {
+    return this.http.get<Array<IRawVideoGame>>(environment.supabase.url + '/rest/v1/rpc/get_videogame_by_id?id_videogame_in=' + id_videogame_in).pipe(
+      map((response: Array<IRawVideoGame>) => {
+        return new VideoGame(response[0]);
+      }
+      )
+    );
+  }
+
 }
