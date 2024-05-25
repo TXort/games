@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Review} from "../models/review.model";
+import {Review, ReviewSubmission} from "../models/review.model";
 import {map, Observable} from "rxjs";
 import {IRawReview} from "../interfaces/rawReview.interface";
 import { environment } from '../../environments/environment.development';
@@ -23,6 +23,12 @@ export class ReviewService {
     );
   }
 
+  public submitVideoGameReview(review: ReviewSubmission): Observable<any> {
+    return this.http.post(environment.supabase.url + '/rest/v1/rpc/insert_review', review);
+  }
 
+  public deleteReview(id_review: number): Observable<any> {
+    return this.http.post(environment.supabase.url + '/rest/v1/rpc/delete_review', {id_review_in: id_review.toString()});
+  }
 
 }
