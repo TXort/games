@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+}
+
+
+mat-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0;
+  padding: 20px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+
+  mat-card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  mat-card-content {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      mat-form-field {
+        margin-bottom: 20px;
+
+        input, textarea {
+          font-size: 16px;
+        }
+      }
+
+      div[fxLayout="row"] {
+        display: flex;
+        justify-content: space-between;
+
+        mat-form-field {
+          width: 48%; // to leave some space between the two fields
+
+          mat-select {
+            width: 100%;
+          }
+        }
+      }
+
+      button {
+        align-self: flex-end;
+        margin-top: 20px;
+      }
+    }
+  }
+}

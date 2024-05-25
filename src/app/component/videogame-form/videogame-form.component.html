@@ -1,0 +1,59 @@
+<!-- Write material UI form with
+
+1. Title
+2. Image URL
+3. 4. 2 dropdowns for Publisher and Developer and ESRB and License in flex row
+4. Description as textarea
+
+
+ -->
+
+<mat-card>
+  <mat-card-title>Video Game Form</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Image URL" formControlName="imageUrl">
+      </mat-form-field>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="Publisher" formControlName="publisher">
+            @for (publisher of publishers; track publisher) {
+              <mat-option [value]="publisher">{{publisher}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="Developer" formControlName="developer">
+            @for (developer of developers; track developer) {
+              <mat-option [value]="developer">{{developer}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="ESRB" formControlName="esrb">
+            @for (esrb of esrbs; track esrb) {
+              <mat-option [value]="esrb">{{esrb}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="50">
+          <mat-select placeholder="License" formControlName="license">
+            @for (license of licenses; track license) {
+              <mat-option [value]="license">{{license}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
