@@ -4,6 +4,7 @@ import {ReviewService} from "../../service/review.service";
 import {MatCard} from "@angular/material/card";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
+import { DomSanitizer } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-game-review-list',
@@ -12,7 +13,7 @@ import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
     MatCard,
     MatIcon,
     MatMenu,
-    MatMenuTrigger
+    MatMenuTrigger,
   ],
   templateUrl: './game-review-list.component.html',
   styleUrl: './game-review-list.component.scss'
@@ -21,7 +22,9 @@ export class GameReviewListComponent {
 
   @Input() reviews: Array<Review> | undefined;
 
-  constructor(private reviewService: ReviewService) {}
+  constructor(private reviewService: ReviewService, protected domSanitizer: DomSanitizer) {
+
+  }
 
   public canDelete(review: Review): boolean {
     return true;
@@ -33,4 +36,6 @@ export class GameReviewListComponent {
     })
   }
 
+
+  protected readonly JSON = JSON;
 }
