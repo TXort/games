@@ -1,0 +1,80 @@
+.form-review {
+  background: #303030;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.main {
+  background: #303030;
+  border-radius: none;
+  box-shadow: none;
+  margin-left: 0px;
+  padding: 0px;
+  padding-bottom: 20px;
+}
+
+.review-text {
+  background: #424242;
+  color: white;
+  box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.7);
+  border-radius: 24px;
+  width: 100%;
+  padding: 20px;
+}
+
+.comment-text {
+  color: white;
+  display: flex;
+  background-color: #424242;
+  outline: none;
+  border: none;
+}
+
+.rating {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.text-rating {
+  margin-top: 13px;
+  margin-right: 10px;
+}
+
+button.ng-star-inserted {
+  background: #303030;
+  box-shadow: none;
+}
+
+.rating-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.stars {
+  color: yellow;
+}
+
+.post {
+  margin-left: auto;
+}
+
+
+.error-text {
+  background: transparent;
+  color: #f44336;
+}
+
+mat-input-underline {
+  background-color: white;
+}
+
+/* remove outline from mat-form-field */
+
+
+

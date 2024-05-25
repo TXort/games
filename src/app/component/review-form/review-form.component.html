@@ -1,0 +1,22 @@
+<mat-card class="main">
+  <form class="form-review" [formGroup]="reviewFormGroup">
+    <form class="review-text foe">
+      <input class="comment-text" matInput type="comment" formControlName="comment"  autofocus />
+      @if (reviewFormGroup.get('comment')?.getError('required')) {
+        <mat-error class="error-text">Review can't be empty</mat-error>
+      }
+      @if (reviewFormGroup.get('comment')?.getError('comment')) {
+        <mat-error class="error-text">Comment contains bad word</mat-error>
+      }
+    </form>
+    <div class="rating">
+      <h3 class="text-rating">Rating:</h3>
+      @for (r of ratingArr; track r; let i = $index) {
+        <button class="rating-btn" (click)="onStarClick(i); $event.preventDefault()">
+          <mat-icon class="stars">{{ getStar(i) }}</mat-icon>
+        </button>
+      }
+      <button class="post" mat-raised-button (click)="onSubmit()" [disabled]="reviewFormGroup.invalid">Post</button>
+    </div>
+  </form>
+</mat-card>
