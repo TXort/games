@@ -1,0 +1,47 @@
+<mat-card class="background">
+@for (review of reviews; track review; let i = $index) {
+    <mat-card class="review-card">
+      @if (review.avatar_url) {
+        <img class="user-picture" src="{{ review.avatar_url }}"  />
+      } @else {
+        <img class="user-picture" src="../../assets/images/default-user.jpg"  />
+      }
+      <div class="data info">
+        @if (review.user_name) {
+          <p>{{ review.user_name }}</p>
+        } @else if (review.user_email) {
+          <p>{{ review.user_email }}</p>
+        } @else {
+          <p>Deleted</p>
+        }
+        <span class="rating">{{ review.rating }} / 5 </span>
+        <span class="star-generator">
+        @for (x of [].constructor(review.rating); track x; let i = $index) {
+          <mat-icon class="stars">star</mat-icon>
+        }
+        </span>
+      </div>
+
+      <div class="data comment">{{ review.content }}</div>
+
+      @if ( canDelete(review) ) {
+      <ng-container>
+        <button class="dot-options" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu class="review-menu" #menu="matMenu">
+          <button mat-menu-item class="menu-options" (click)="onDelete(review)">
+            <mat-icon class="menu-item-icon">delete</mat-icon>
+            <span class="menu-item-text">Delete review</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+      }
+      @if (!canDelete(review)) {
+        <ng-container>
+          <div class="empty"></div>
+        </ng-container>
+      }
+    </mat-card>
+}
+</mat-card>

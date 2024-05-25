@@ -1,0 +1,135 @@
+.background {
+  background: #303030;
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+.user-picture {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 40px;
+  margin: 20px;
+  margin-top: 10px;
+}
+
+.review-card {
+  border-radius: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin-bottom: 2ch;
+
+  .data {
+    flex: 1px;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  .info {
+    vertical-align: middle;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    span {
+      vertical-align: middle;
+    }
+
+    p {
+      margin-bottom: -3px;
+    }
+  }
+}
+
+::ng-deep .review-menu {
+  background: white;
+  border-radius: 24px !important;
+
+  .menu-item-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-right: 5px;
+  }
+
+  .menu-item-icon {
+    padding-top: 5px;
+  }
+}
+
+.empty {
+  width: 40px;
+  height: 40px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 24px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 24px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9e9e9e;
+}
+
+.dot-options {
+  width: 40px;
+  border: 0px;
+  background: #424242;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.menu-options {
+  border: 0px;
+  background: #424242;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.comment {
+  background: #424242;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.star-generator {;
+  padding-top: 12px;
+  /* reduce size by 10% */
+}
+
+.stars {
+  transform: scale(0.8);
+  color: yellow;
+}
+
+
+/* move up */
+.rating {
+  transform: translateY(-40px);
+}
