@@ -9,3 +9,10 @@ export interface IRawReview {
   user_name: string;
   user_email: string;
 }
+
+export interface IRawReviewSubmission {
+  content_in: string;
+  id_videogame_in: number;
+  rating_in: number;
+  title_in: string;
+}
