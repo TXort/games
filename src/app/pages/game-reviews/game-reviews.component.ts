@@ -46,7 +46,7 @@ export class GameReviewsComponent {
 
   public onSubmit(reviewData: any): void {
     const review: ReviewSubmission = {
-      title_in: "Review Title",
+      title_in: reviewData.title,
       content_in: reviewData.comment,
       rating_in: reviewData.rating,
       id_videogame_in: this.id()
