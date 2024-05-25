@@ -1,6 +1,6 @@
 import {Component, signal, Signal, WritableSignal} from '@angular/core';
 import {BehaviorSubject, map, Observable, switchMap} from "rxjs";
-import {Review} from "../../models/review.model";
+import {Review, ReviewSubmission} from "../../models/review.model";
 import {VideoGame} from "../../models/videogame.model";
 import {ActivatedRoute} from "@angular/router";
 import {VideogameService} from "../../service/videogame.service";
@@ -8,7 +8,7 @@ import {ReviewService} from "../../service/review.service";
 import {GameDetailsComponent} from "../../component/game-details/game-details.component";
 import {ReviewFormComponent} from "../../component/review-form/review-form.component";
 import {GameReviewListComponent} from "../../component/game-review-list/game-review-list.component";
-import {IRawReview} from "../../interfaces/rawReview.interface";
+import {IRawReview, IRawReviewSubmission} from "../../interfaces/rawReview.interface";
 import {AsyncPipe} from "@angular/common";
 
 @Component({
@@ -44,8 +44,16 @@ export class GameReviewsComponent {
     );
   }
 
-  public onSubmit(reviewData: IRawReview): void {
-    console.log(reviewData);
+  public onSubmit(reviewData: any): void {
+    const review: ReviewSubmission = {
+      title_in: "Review Title",
+      content_in: reviewData.comment,
+      rating_in: reviewData.rating,
+      id_videogame_in: this.id()
+    }
+    this.reviewService.submitVideoGameReview(review).subscribe(() => {
+      this.refreshReviews$.next(true);
+    });
   }
 
 
