@@ -3,6 +3,13 @@ import {GameReviewsComponent} from "./pages/game-reviews/game-reviews.component"
 
 export const routes: Routes = [
   {
+    path: '',
+    loadComponent: () =>
+      import('./pages/games/games.component').then(
+        (com) => com.GamesComponent
+      ),
+  },
+  {
     path: 'games',
     children: [
       {
@@ -27,13 +34,6 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/admin-panel/admin-panel.component').then(
         (com) => com.AdminPanelComponent
-      ),
-  },
-  {
-    path: '',
-    loadComponent: () =>
-      import('./pages/games/games.component').then(
-        (com) => com.GamesComponent
       ),
   },
   {
