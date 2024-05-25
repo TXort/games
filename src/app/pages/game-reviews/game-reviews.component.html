@@ -1,0 +1,15 @@
+<div class="background">
+  <ng-container>
+    @if( this.game$ | async; as game) {
+      <app-game-details [game]="game"></app-game-details>
+    }
+  </ng-container>
+
+  <app-review-form (submit) = "onSubmit($event)"></app-review-form>
+
+  <ng-container>
+    @if( this.reviews$ | async; as reviews) {
+      <app-game-review-list [reviews]="reviews"></app-game-review-list>
+    }
+  </ng-container>
+</div>
