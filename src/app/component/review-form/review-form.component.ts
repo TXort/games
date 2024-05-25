@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {IRawReview} from "../../interfaces/rawReview.interface";
+import {IRawReview, IRawReviewSubmission} from "../../interfaces/rawReview.interface";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {commentValidator} from "../../validators/comment.validator";
 import {MatError, MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
@@ -26,7 +26,7 @@ import {MatInputModule} from "@angular/material/input";
   styleUrl: './review-form.component.scss'
 })
 export class ReviewFormComponent {
-  @Output() submit: EventEmitter<IRawReview> = new EventEmitter();
+  @Output() submit: EventEmitter<IRawReviewSubmission> = new EventEmitter();
 
   private rating = 0;
   private starCount = 5;
