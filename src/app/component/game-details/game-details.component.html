@@ -1,0 +1,17 @@
+<mat-card class="show-details-container">
+  <img [src]="game?.game_picture_url" />
+  <div class="show-details">
+    <div class="info info-right">
+      <h2 class="title">{{ game?.title }}</h2>
+      <p class="mat-caption mat-rating">
+        @if (game && game.rating) {
+          <mat-icon>star</mat-icon> <span>{{ Math.round(game.rating * 100) / 100 }} / 5</span>
+        }
+      </p>
+    </div>
+
+    <div class="info info-left">
+      <p class="mat-caption">{{ game?.description }}</p>
+    </div>
+  </div>
+</mat-card>
