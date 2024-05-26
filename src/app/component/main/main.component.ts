@@ -10,13 +10,15 @@ import {routes} from "../../app.routes";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {SigninComponent} from "../signin/signin.component";
 import {StorageService} from "../../service/storage.service";
+import {Observable} from "rxjs";
+import {AsyncPipe} from "@angular/common";
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
-    MatDrawerContainer, MatSidenavModule, MatButtonModule, MatIcon, MatIconModule, MatNavList, MatListItem, SigninComponent, RouterOutlet, RouterModule, RouterLink, RouterLinkActive,
+    MatDrawerContainer, MatSidenavModule, MatButtonModule, MatIcon, MatIconModule, MatNavList, MatListItem, SigninComponent, RouterOutlet, RouterModule, RouterLink, RouterLinkActive, AsyncPipe,
 
   ],
   templateUrl: './main.component.html',
@@ -29,6 +31,8 @@ export class MainComponent {
   userEmail: WritableSignal<string | undefined> = signal('');
   showFiller: WritableSignal<boolean> = signal(false);
   userAvatar: WritableSignal<string | null> = signal(null);
+
+  isAdmin$: Observable<boolean> = this.auth.isAdmin();
 
   constructor(private auth: AuthService, private router: Router, private ls: StorageService) {
     this.auth.currentUser.subscribe(user => {

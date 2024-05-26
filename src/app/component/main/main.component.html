@@ -23,13 +23,16 @@
           </div>
           <div>
           <mat-nav-list>
-            @for (link of routes; track link; let index = $index) {
-              @if (  link.path != null && this.filterRoutes(link.path) && link.path.length > 3 ) {
-              <mat-list-item (click)="this.navigateTo(link.path)">
-                  {{this.fixName(link.path)}}
+              <mat-list-item (click)="this.navigateTo('games')">
+                <mat-icon>videogame_asset</mat-icon>
+                <span>Games</span>
               </mat-list-item>
+              @if ( this.isAdmin$ | async ) {
+                <mat-list-item (click)="this.navigateTo('admin-panel')">
+                  <mat-icon>admin_panel_settings</mat-icon>
+                  <span>Admin panel</span>
+                </mat-list-item>
               }
-            }
           </mat-nav-list>
           </div>
           <div class="signout-button">
