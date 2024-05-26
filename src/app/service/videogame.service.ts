@@ -53,6 +53,25 @@ export class VideogameService {
     return this.http.post(environment.supabase.url + '/rest/v1/rpc/insert_videogame', videoGameSubmission);
   }
 
+  public getEsrbRatings(): Observable<Array<EsrbRating>> {
+    return this.http.get<Array<IRawEsrbRating>>(environment.supabase.url + '/rest/v1/rpc/get_esrb_ratings').pipe(
+      map((response: Array<IRawEsrbRating>) => {
+          console.log(response);
+          return response.map((esrbRating: IRawEsrbRating) => new EsrbRating(esrbRating));
+        }
+      )
+    );
+  }
+
+  public getLicenses(): Observable<Array<License>> {
+    return this.http.get<Array<IRawLicense>>(environment.supabase.url + '/rest/v1/rpc/get_licenses').pipe(
+      map((response: Array<IRawLicense>) => {
+          console.log(response);
+          return response.map((license: IRawLicense) => new License(license));
+        }
+      )
+    );
+  }
 
 
 
