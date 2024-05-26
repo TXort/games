@@ -42,7 +42,6 @@ export class MainComponent {
         this.userEmail.set(user?.email);
       }
     });
-    console.log(routes);
   }
 
   navigateTo(route: string) {
