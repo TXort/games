@@ -1,1 +1,8 @@
-<app-videogame-form></app-videogame-form>
+@if( this.formDataInput$ | async; as fd) {
+  <app-videogame-form (submit) = "onSubmit($event)"
+    [publishers]="fd.publishers"
+    [developers]="fd.developers"
+    [esrbs]="fd.esrbs"
+    [licenses]="fd.licences"
+  ></app-videogame-form>
+}
