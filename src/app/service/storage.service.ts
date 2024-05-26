@@ -23,5 +23,20 @@ export class StorageService {
     localStorage.removeItem(key);
   }
 
+  public getData(): any {
+    return this.get('sb-jzfegpsbaxtsanqvzcid-auth-token') || {};
+  }
+
+  public getToken(): any {
+    return this.getData().access_token || "";
+  }
+
+  public getUserNameOrEmail(): any {
+    console.log(this.getData());
+    return this.getData().user.user_metadata.user_name || this.getData().user.email || "";
+  }
+
+
+
 
 }
