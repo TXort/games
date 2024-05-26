@@ -33,7 +33,7 @@ export class GameReviewListComponent {
 
   public onDelete(review: Review): void {
     this.reviewService.deleteReview(review.id_review).subscribe(() => {
-      console.log('Review deleted');
+      this.reviews = this.reviews?.filter(r => r.id_review !== review.id_review);
     })
   }
 
