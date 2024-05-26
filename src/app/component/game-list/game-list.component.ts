@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {VideoGame} from "../../models/videogame.model";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterModule, RouterOutlet} from "@angular/router";
 import {GameCardComponent} from "../game-card/game-card.component";
 
 @Component({
@@ -8,6 +8,8 @@ import {GameCardComponent} from "../game-card/game-card.component";
   standalone: true,
   imports: [
     RouterLink,
+    RouterOutlet,
+    RouterModule,
     GameCardComponent
   ],
   templateUrl: './game-list.component.html',
