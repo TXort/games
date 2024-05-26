@@ -31,9 +31,15 @@ export class StorageService {
     return this.getData().access_token || "";
   }
 
-  public getUserNameOrEmail(): any {
+  public getUserNameOrEmail(): string {
     console.log(this.getData());
-    return this.getData().user.user_metadata.user_name || this.getData().user.email || "";
+    if (this.getData().user?.user_metadata?.user_name) {
+      return this.getData().user.user_metadata.user_name;
+    }
+    if (this.getData().user?.email) {
+      return this.getData().user.email;
+    }
+    return "";
   }
 
 
