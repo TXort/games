@@ -5,6 +5,7 @@ import {MatCard} from "@angular/material/card";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import { DomSanitizer } from '@angular/platform-browser'
+import {StorageService} from "../../service/storage.service";
 
 @Component({
   selector: 'app-game-review-list',
@@ -22,12 +23,12 @@ export class GameReviewListComponent {
 
   @Input() reviews: Array<Review> | undefined;
 
-  constructor(private reviewService: ReviewService, protected domSanitizer: DomSanitizer) {
+  constructor(private reviewService: ReviewService, protected domSanitizer: DomSanitizer, private ls: StorageService) {
 
   }
 
   public canDelete(review: Review): boolean {
-    return true;
+    return this.ls.getUserNameOrEmail() === review.user_email || this.ls.getUserNameOrEmail() === JSON.parse(review.user_name);
   }
 
   public onDelete(review: Review): void {
