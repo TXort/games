@@ -39,7 +39,7 @@ export class ReviewFormComponent {
   public reviewFormGroup: FormGroup = this.fb.group({
     comment: ['', [Validators.required, commentValidator]],
     rating: [''],
-    title: ['', [Validators.required]]
+    title: ['', [Validators.required, commentValidator]]
   });
 
   public getStar(i: number) {
