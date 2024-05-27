@@ -19,11 +19,9 @@ export class GamesComponent {
 
   searchContent: Signal<string> = signal('');
 
-  constructor(private videogameService: VideogameService) {
+  constructor(private videogameService: VideogameService) {}
 
-  }
-
-  doSearch() {
+  doSearch(): void {
     if (this.searchContent() === '') {
       this.games$ = this.videogameService.getVideoGames();
     } else {

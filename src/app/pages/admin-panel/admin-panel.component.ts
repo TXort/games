@@ -46,10 +46,8 @@ export class AdminPanelComponent {
     );
   }
 
-  public onSubmit(gameData: IRawVideoGameSubmission): void { // FIX
-    this.gameService.submitVideoGame(gameData).subscribe(() => {
-      console.log('Submitted');
-    })
+  public onSubmit(gameData: IRawVideoGameSubmission): void {
+    this.gameService.submitVideoGame(gameData).subscribe();
   }
 
 

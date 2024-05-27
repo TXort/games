@@ -26,7 +26,7 @@ import {AsyncPipe} from "@angular/common";
 export class GameReviewsComponent {
 
   id: WritableSignal<number> = signal(-1);
-  refreshReviews$ = new BehaviorSubject<boolean>(true);
+  refreshReviews$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   game$: Observable<VideoGame>;
   reviews$: Observable<Array<Review> | null>;
 

@@ -48,29 +48,12 @@ export class MainComponent {
     });
   }
 
-  navigateTo(route: string) {
-    this.router.navigate([route]).then(r => console.log(r))
+  navigateTo(route: string): void {
+    this.router.navigate([route])
   }
 
-  signOut() {
+  signOut(): void {
     this.auth.signOut();
-    //this.router.navigate(['/signin']);
   }
 
-  toggleFiller() {
-    this.showFiller.set(!this.showFiller());
-  }
-
-  fixName(string: string): string {
-    return string.charAt(0).toUpperCase() + string.slice(1).replace(/-/g, ' ');
-  }
-
-  filterRoutes(str: string): any {
-
-    let whiteList: Array<string> = ['signin'];
-
-    return !whiteList.includes(str);
-  }
-
-  protected readonly routes = routes;
 }

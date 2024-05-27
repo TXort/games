@@ -11,7 +11,7 @@ import { AuthService } from '../../service/auth.service';
 export class SigninComponent {
   constructor(private auth: AuthService) {}
 
-  async handleAuth() {
+  async handleAuth(): Promise<void> {
     const response = await this.auth.signInWithGithub();
   }
 }

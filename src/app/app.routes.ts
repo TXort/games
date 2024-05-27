@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import {GameReviewsComponent} from "./pages/game-reviews/game-reviews.component";
 
 export const routes: Routes = [
   {

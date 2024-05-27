@@ -16,10 +16,7 @@ import {MatIcon} from "@angular/material/icon";
 export class GameDetailsComponent {
   @Input() game: VideoGame | undefined;
 
-  constructor() {
-    console.log('GameDetailsComponent');
-    console.log(this.game);
-  }
+  constructor() {}
 
   protected readonly Math = Math;
 }

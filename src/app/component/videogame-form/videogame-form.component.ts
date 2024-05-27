@@ -54,7 +54,7 @@ export class VideogameFormComponent {
 
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const videoGameForm: VideoGameForm = new VideoGameForm({
       publishers: this.publishers,
       developers: this.developers,
@@ -81,8 +81,6 @@ export class VideogameFormComponent {
     ) {
       return;
     }
-
-    console.log(videoGameSubmission);
 
     this.submit.emit(videoGameSubmission);
     this.reviewFormGroup.reset();

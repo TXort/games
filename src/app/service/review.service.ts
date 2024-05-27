@@ -15,7 +15,6 @@ export class ReviewService {
   public getReviewsOfVideoGame(id_videogame_in: number): Observable<Array<Review>> {
     return this.http.get<Array<IRawReview>>(environment.supabase.url + '/rest/v1/rpc/get_reviews_of_videogame?id_videogame_in=' + id_videogame_in).pipe(
       map((response: Array<IRawReview>) => {
-          console.log("SDASDFASDFasdf");
         console.log(response);
         return response.map((review: IRawReview) => new Review(review));
       }

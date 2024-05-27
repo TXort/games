@@ -28,9 +28,7 @@ export class GameReviewListComponent {
   @Input() reviews: Array<Review> | undefined;
   isAdmin$: Observable<boolean> = this.auth.isAdmin();
 
-  constructor(private auth: AuthService, private reviewService: ReviewService, protected domSanitizer: DomSanitizer, private ls: StorageService) {
-
-  }
+  constructor(private auth: AuthService, private reviewService: ReviewService, protected domSanitizer: DomSanitizer, private ls: StorageService) {}
 
   public canDelete(review: Review): boolean {
     return this.ls.getUserNameOrEmail() === review.user_email || this.ls.getUserNameOrEmail() === JSON.parse(review.user_name);

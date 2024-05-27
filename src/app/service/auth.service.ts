@@ -22,25 +22,25 @@ export class AuthService {
 
     this.supabase.auth.onAuthStateChange((event, session) => {
 
-
-      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+      console.log('event', event);
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'USER_UPDATED') {
         this.user.next(session!.user);
-        this.router.navigate(['/']);
       } else {
         this.user.next(null);
       }
+
     });
   }
 
-  async signInWithGithub() {
+  async signInWithGithub(): Promise<void> {
     await this.supabase.auth.signInWithOAuth({
       provider: 'github',
     });
   }
 
-  async signOut() {
+  async signOut(): Promise<void>  {
     await this.supabase.auth.signOut().then((res) => {
-      console.log(res);
+      this.ls.remove('sb-jzfegpsbaxtsanqvzcid-auth-token');
     });
     this.ls.remove('sb-jzfegpsbaxtsanqvzcid-auth-token');
   }

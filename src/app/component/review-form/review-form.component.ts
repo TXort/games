@@ -28,8 +28,8 @@ import {MatInputModule} from "@angular/material/input";
 export class ReviewFormComponent {
   @Output() submit: EventEmitter<IRawReviewSubmission> = new EventEmitter();
 
-  private rating = 0;
-  private starCount = 5;
+  private rating: number = 0;
+  private starCount: number  = 5;
   public ratingArr: Array<boolean> = [];
 
   constructor(private fb: FormBuilder) {
@@ -42,7 +42,7 @@ export class ReviewFormComponent {
     title: ['', [Validators.required, commentValidator]]
   });
 
-  public getStar(i: number) {
+  public getStar(i: number): string {
     if (this.rating >= i + 1) {
       return 'star';
     } else {
@@ -50,7 +50,7 @@ export class ReviewFormComponent {
     }
   }
 
-  public onStarClick(i: number) {
+  public onStarClick(i: number): void {
     this.rating = i + 1;
   }
 
